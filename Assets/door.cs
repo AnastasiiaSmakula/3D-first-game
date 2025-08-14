@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class door : MonoBehaviour
 {
@@ -28,5 +29,8 @@ public class door : MonoBehaviour
 
         transform.position = closedPosition + openOffset;
         opened = true;
+
+        int activeSceneNumber = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(activeSceneNumber + 1);
     }
 }

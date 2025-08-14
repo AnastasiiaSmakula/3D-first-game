@@ -13,8 +13,6 @@ public class player : MonoBehaviour
     [SerializeField]
     public bool hasKey = false;
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,6 +33,16 @@ public class player : MonoBehaviour
 
         moveInput = context.ReadValue<Vector2>();
 
+        Vector3 cameraRight = Camera.main.transform.right;
+        Vector3 cameraForward = Camera.main.transform.forward;
+
+        cameraRight.Normalize();
+        cameraForward.Normalize();
+
+        //moveInput = cameraRight * moveInput.x + cameraForward * moveInput.y;
     }
 }
-// menit poziciu v zavislosti od stlaceneho gombika 
+// vytvor level aj tazsie // skryty kluc 
+//rozdel dvere na dve casti 
+// skakanie 
+// platvofmy 
