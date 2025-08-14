@@ -10,6 +10,9 @@ public class player : MonoBehaviour
     [SerializeField]
     private Vector2 moveInput;
 
+    [SerializeField]
+    public bool hasKey = false;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,8 +24,6 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // transform.position = new Vector3(transform.position.x + 1 / speedEfekt * Time.deltaTime, transform.position.y, transform.position.z);
-
         Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
 
         transform.position += move * speed * Time.deltaTime;
