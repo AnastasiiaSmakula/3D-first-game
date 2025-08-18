@@ -34,7 +34,9 @@ public class player : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
 
         Vector3 cameraRight = Camera.main.transform.right;
+        cameraRight.y = 0;
         Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0;
 
         cameraRight.Normalize();
         cameraForward.Normalize();

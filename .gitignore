@@ -55,6 +55,9 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+# External assets
+Assets/POLY STYLE*
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
