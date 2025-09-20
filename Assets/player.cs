@@ -8,7 +8,7 @@ public class player : MonoBehaviour
     private float speed = 0.5f;
 
     [SerializeField]
-    private Vector2 moveInput;
+    private Vector3 moveInput;
 
     [SerializeField]
     public bool hasKey = false;
@@ -22,7 +22,7 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
+        Vector3 move = new Vector3(moveInput.x, moveInput.y, moveInput.z);
 
         transform.position += move * speed * Time.deltaTime;
 
@@ -31,17 +31,17 @@ public class player : MonoBehaviour
     public void HandleMovement(InputAction.CallbackContext context)
     {
 
-        moveInput = context.ReadValue<Vector2>();
+        Vector2 rawInput = context.ReadValue<Vector2>();
 
         Vector3 cameraRight = Camera.main.transform.right;
-        cameraRight.y = 0;
+        //cameraRight.y = 0;
         Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0;
+        //cameraForward.y = 0;
 
         cameraRight.Normalize();
         cameraForward.Normalize();
 
-        //moveInput = cameraRight * moveInput.x + cameraForward * moveInput.y;
+        moveInput = cameraRight * rawInput.x + cameraForward * rawInput.y;
     }
 }
 // vytvor level aj tazsie // skryty kluc 
