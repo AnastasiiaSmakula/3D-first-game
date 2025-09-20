@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,26 +12,19 @@ public class player : MonoBehaviour
     [SerializeField]
     public bool hasKey = false;
 
+    [SerializeField]
+    public Vector2 rawInput;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = new Vector3(moveInput.x, moveInput.y, moveInput.z);
-
-        transform.position += move * speed * Time.deltaTime;
-
-    }
-
-    public void HandleMovement(InputAction.CallbackContext context)
-    {
-
-        Vector2 rawInput = context.ReadValue<Vector2>();
-
         Vector3 cameraRight = Camera.main.transform.right;
         //cameraRight.y = 0;
         Vector3 cameraForward = Camera.main.transform.forward;
@@ -42,6 +34,16 @@ public class player : MonoBehaviour
         cameraForward.Normalize();
 
         moveInput = cameraRight * rawInput.x + cameraForward * rawInput.y;
+
+        Vector3 move = new Vector3(moveInput.x, 0, moveInput.z);
+
+        transform.position += move * speed * Time.deltaTime;
+    }
+
+    public void HandleMovement(InputAction.CallbackContext context)
+    {
+
+        rawInput = context.ReadValue<Vector2>();
     }
 }
 // vytvor level aj tazsie // skryty kluc 
