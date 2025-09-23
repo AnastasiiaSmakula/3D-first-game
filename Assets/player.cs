@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,9 @@ public class player : MonoBehaviour
     [SerializeField]
     private bool isGrounded = true;
 
+    [SerializeField]
+    private float currentYVelocity = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,7 +51,9 @@ public class player : MonoBehaviour
 
         transform.position += move * speed * Time.deltaTime;
 
-        if (rigidbody.linearVelocity.y == 0)
+        currentYVelocity = rigidbody.linearVelocity.y;
+
+        if (Math.Abs(rigidbody.linearVelocity.y) < 0.01)
         {
             isGrounded = true;
         }

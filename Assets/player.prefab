@@ -152,3 +152,7 @@ MonoBehaviour:
   speed: 5
   moveInput: {x: 0, y: 0, z: 0}
   hasKey: 0
+  rawInput: {x: 0, y: 0}
+  rigidbody: {fileID: 0}
+  JumpForce: 400
+  isGrounded: 1
