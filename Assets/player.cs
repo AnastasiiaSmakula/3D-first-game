@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,13 @@ public class player : MonoBehaviour
 
     [SerializeField]
     public Vector2 rawInput;
+
+    public Rigidbody rigidbody;
+
+    public int JumpForce;
+
+    [SerializeField]
+    private bool isGrounded = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,15 +46,35 @@ public class player : MonoBehaviour
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.z);
 
         transform.position += move * speed * Time.deltaTime;
+
+        if (rigidbody.linearVelocity.y == 0)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     public void HandleMovement(InputAction.CallbackContext context)
     {
-
         rawInput = context.ReadValue<Vector2>();
     }
+
+    // Look at velocities of the rigidbody
+    // If sa nehibe vertikalne (y)
+    // Novy state / premennu na to vediet kedy uz sa mozeme hybat
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (isGrounded)
+        {
+
+            Vector3 force = Vector3.up * JumpForce;
+            rigidbody.AddForce(force);
+        }
+    }
 }
-// vytvor level aj tazsie // skryty kluc 
-//rozdel dvere na dve casti 
-// skakanie 
-// platvofmy 
