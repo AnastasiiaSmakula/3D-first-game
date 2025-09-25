@@ -27,6 +27,8 @@ public class player : MonoBehaviour
     [SerializeField]
     private float currentYVelocity = 0f;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,6 +63,13 @@ public class player : MonoBehaviour
         {
             isGrounded = false;
         }
+
+        if (rigidbody.position.y < -7)
+        {
+            Vector3 start = new Vector3(1, 1, 1);
+            transform.position = start;
+
+        }
     }
 
     public void HandleMovement(InputAction.CallbackContext context)
@@ -84,3 +93,6 @@ public class player : MonoBehaviour
         }
     }
 }
+
+//novy level kde budu platformy 
+//vytvorit level kde najpv musime nazbierat viac veci napr 2 kluce 
