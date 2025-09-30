@@ -27,6 +27,9 @@ public class player : MonoBehaviour
     [SerializeField]
     private float currentYVelocity = 0f;
 
+    [SerializeField]
+    private Animator animator;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -58,10 +61,21 @@ public class player : MonoBehaviour
         if (Math.Abs(rigidbody.linearVelocity.y) < 0.01)
         {
             isGrounded = true;
+            animator.SetBool("IsJumping", false);
+            if (Math.Abs(move.z) + Math.Abs(move.x) < 0.01)
+            {
+                animator.SetBool("IsRunning", false);
+            }
+            else
+            {
+                animator.SetBool("IsRunning", true);
+            }
+            // animator.SetBool("IsRunning", Math.Abs(rigidbody.linearVelocity.z) + Math.Abs(rigidbody.linearVelocity.x) > 0.01);
         }
         else
         {
-            isGrounded = false;
+            //isGrounded = false;
+            animator.SetBool("IsJumping", true);
         }
 
         if (rigidbody.position.y < -7)
@@ -90,8 +104,11 @@ public class player : MonoBehaviour
 
             Vector3 force = Vector3.up * JumpForce;
             rigidbody.AddForce(force);
+            isGrounded = false;
+
         }
     }
+
 }
 
 //novy level kde budu platformy 
