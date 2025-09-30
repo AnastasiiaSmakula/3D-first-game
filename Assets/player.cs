@@ -54,6 +54,8 @@ public class player : MonoBehaviour
 
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.z);
 
+        transform.rotation = Quaternion.LookRotation(move);
+
         transform.position += move * speed * Time.deltaTime;
 
         currentYVelocity = rigidbody.linearVelocity.y;
