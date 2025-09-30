@@ -115,3 +115,7 @@ public class player : MonoBehaviour
 
 //novy level kde budu platformy 
 //vytvorit level kde najpv musime nazbierat viac veci napr 2 kluce 
+
+//  vytvorit novy level - bude mat hybaciu platfotmu 
+// hrac musi na nu naskocit aby sa dostal z bodu a do bodu b 
+//alt. vytvorit level kde su usmrtovacie veci - noze 
