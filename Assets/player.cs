@@ -1,4 +1,5 @@
 using System;
+using System.Data.Common;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,6 +30,18 @@ public class player : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private keyManager keyManager;
+
+
+    public void PickUpKey(int id)
+    {
+        if (keyManager != null)
+        {
+            keyManager.ShowKey(id);
+        }
+
+    }
 
 
 
