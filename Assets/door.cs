@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,10 +22,22 @@ public class door : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        key[] keys = FindObjectsByType<key>(FindObjectsSortMode.None);
+
+        bool hasAllKeys = true;
+
+        foreach (key k in keys)
+        {
+            if (!k.pickedUp)
+            {
+                hasAllKeys = false;
+            }
+        }
+
         player p = other.gameObject.GetComponent<player>();
 
         if (p == null) return;
-        else if (p.hasKey == false) return;
+        else if (hasAllKeys == false) return;
         else if (opened == true) return;
 
         transform.position = closedPosition + openOffset;

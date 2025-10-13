@@ -5,6 +5,8 @@ public class key : MonoBehaviour
 {
     [SerializeField]
     private int id;
+    [SerializeField]
+    public bool pickedUp;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +32,7 @@ public class key : MonoBehaviour
             }
 
             transform.parent = other.transform;
+            pickedUp = true;
         }
     }
 }

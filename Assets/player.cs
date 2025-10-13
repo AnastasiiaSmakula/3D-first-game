@@ -40,6 +40,10 @@ public class player : MonoBehaviour
         {
             keyManager.ShowKey(id);
         }
+        else
+        {
+            Debug.LogError("link key manager");
+        }
 
     }
 
@@ -48,6 +52,8 @@ public class player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        keyManager = FindAnyObjectByType<keyManager>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -126,9 +132,15 @@ public class player : MonoBehaviour
 
 }
 
-//novy level kde budu platformy 
-//vytvorit level kde najpv musime nazbierat viac veci napr 2 kluce 
 
-//  vytvorit novy level - bude mat hybaciu platfotmu 
-// hrac musi na nu naskocit aby sa dostal z bodu a do bodu b 
-//alt. vytvorit level kde su usmrtovacie veci - noze 
+
+// ikonky pre kluce 
+// najst 3D model pre kluce 
+// canvas do kazdej sceny a aj linkovat
+
+
+// resetovanie pozicie klucov. 
+// a) start pozicia ako vektor pre kluce 
+// b)ked hrac spadne tak posunut tie kluuce na startovu poziciu 
+// c) odpojit od hraca (aby nebol ich parent) (blabla.parent == null)
+// d) key manager nova metoda: reset, a zavolat ako hrac spadne
